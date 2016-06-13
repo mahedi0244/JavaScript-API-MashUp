@@ -12,9 +12,10 @@ $(document).ready(function(){
         console.log(response);  
         $("#movie-title").html("Title : "+response.Title);   
         $("#poster").attr("src", response.Poster);
-        $("#genre").html("Genrer : "+response.Genre);  
+        $("#genre").html("Genre : "+response.Genre);  
         $("#year").html("Year : "+response.Year);
         $("#actors").html("Actors : "+response.Actors);
+        $("#plot").html("Plot : " + response.Plot);
       } 
     });
   });
@@ -36,9 +37,10 @@ function myFunction() {
           console.log(response);  
           $("#movie-title").html("Title : "+response.Title);   
           $("#poster").attr("src", response.Poster);
-          $("#genre").html("Genrer : "+response.Genre);  
+          $("#genre").html("Genre : "+response.Genre);  
           $("#year").html("Year : "+response.Year);
           $("#actors").html("Actors : "+response.Actors);
+          $("#plot").html("Plot : " + response.Plot);
         } 
       });
     //}
