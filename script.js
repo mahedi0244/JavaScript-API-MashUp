@@ -3,9 +3,10 @@ $(document).ready(function()
   $("#search").on("submit",function(e)
   {
     e.preventDefault();
+    var searchTerm = $("input[name=t]").val();
     var formData = 
     {
-      's': $('input[name=t]').val(),
+      's': searchTerm
     };
     $.ajax({   
       url: "http://www.omdbapi.com/?",   
@@ -14,31 +15,20 @@ $(document).ready(function()
       success: function(response, callback) 
       {     
         $("#starter").html("");
-        // $(".multimedia").empty();
-        // $(".movie-title").empty();
-        // $(".poster").empty();
-        // $(".year").empty();
-
 
         for(var i = 0; i < response.Search.length; i++)
         {
-          console.log(response.Search[i]);  
+          //console.log(response.Search[i]);  
           var t = $("<div class='multimedia'> " + 
-                    "<h2 class='movie-title'>" + response.Search[i].Title + "</h2>" +
-                    "<img class='poster' src=' " + response.Search[i].Poster + "'/>" + 
-                    "<h3 class='year'>Year: " + response.Search[i].Year + "</h3>" + 
+                    "<h2 class='movie-title'>" + 
+                    response.Search[i].Title + "</h2>" +
+                    "<img class='poster' src=' " + 
+                    response.Search[i].Poster + "'/>" + 
+                    "<h3 class='year'>Year: " + 
+                    response.Search[i].Year + "</h3>" + 
                   "</div");
-        $("#starter").append(t);
-      }
-        /*$("#multimedia").append(function()
-         { 
-              $("#movie-title").html("Title : "+response.Search[i].Title);   
-              $("#poster").attr("src", response.Search[i].Poster);
-              $("#genre").html("Genre : "+response.Genre);  
-              $("#year").html("Year : "+response.Search[i].Year);
-              $("#actors").html("Actors : "+response.Search[i].Actors);
-              $("#plot").html("Plot : " + response.Search[i].Plot);
-        })*/
+          $("#starter").append(t);
+        }
       } 
     });
   });
@@ -48,10 +38,7 @@ function myFunction() {
 
     var formData = {
       't'              : $('input[name=t]').val(),
-    };
-    //alert($( "usrinput" ).length);
-    //if (document.getElementById("usrinput").length == 3){
-      
+    };    
       $.ajax({   
         url: "http://www.omdbapi.com/?",   
         data: formData,
