@@ -2,7 +2,7 @@ $(document).ready(function(){
   $("#search").on("submit",function(e){
     e.preventDefault();
     var formData = {
-      't'              : $('input[name=t]').val(),
+      's'              : $('input[name=t]').val(),
     };
     $.ajax({   
       url: "http://www.omdbapi.com/?",   
@@ -15,6 +15,8 @@ $(document).ready(function(){
         $("#genre").html("Genrer : "+response.Genre);  
         $("#year").html("Year : "+response.Year);
         $("#actors").html("Actors : "+response.Actors);
+        $("#rating").html("Rating : "+response.imdbRating);
+
       } 
     });
   });
